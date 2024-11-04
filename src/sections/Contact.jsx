@@ -1,4 +1,3 @@
-require('dotenv').config()
 import emailjs from '@emailjs/browser';
 import { useRef, useState } from 'react';
 
