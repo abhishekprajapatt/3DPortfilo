@@ -1,4 +1,3 @@
-require('dotenv').config()
 import emailjs from '@emailjs/browser';
 import { useRef, useState } from 'react';
 
@@ -21,14 +20,37 @@ const Contact = () => {
     setForm({ ...form, [name]: value });
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
+
+    // try {
+    //   await emailjs.send(
+    //     'service_v2isz6j',
+    //     'template_spykxeg',
+    //     {
+    //       from_name: from.name,
+    //       to_name: 'Striver',
+    //       from_email: form.email,
+    //       to_email: 'striver532006@gmail.com',
+    //       message: form.message
+    //     },
+    //     'HRQqsn4IUVAi2nSWx'
+    //   )
+      
+    //   setLoading(false);
+    //   alert("Your message has been send!");
+    // } catch (error) {
+    //   setLoading(false);
+    //   console.log(error);
+    //   alert("Somthing went wrong!")
+    // }
+
     emailjs
       .send(
-        import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
+        'service_v2isz6j',
+        'template_spykxeg',
         {
           from_name: form.name,
           to_name: 'Striver',
@@ -36,9 +58,8 @@ const Contact = () => {
           to_email: 'striver532006@gmail.com',
           message: form.message,
         },
-        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY,
-      )
-      .then(
+        'HRQqsn4IUVAi2nSWx',
+      ).then(
         () => {
           setLoading(false);
           showAlert({
@@ -67,7 +88,7 @@ const Contact = () => {
           });
         },
       );
-  };
+   };
 
   return (
     <section className="c-space my-20" id="contact">
