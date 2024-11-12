@@ -114,7 +114,7 @@ const Contact = () => {
                 onChange={handleChange}
                 required
                 className="field-input"
-                placeholder="ex., Striver"
+                placeholder="ex., Abhishek"
               />
             </label>
 
